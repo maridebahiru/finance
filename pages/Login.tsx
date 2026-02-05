@@ -1,12 +1,7 @@
-
 import React, { useState } from 'react';
-import { LOGO_URL } from '../constants';
+import { LOGO_URL } from '../constants'; // ✅ points to ejat.png
 
-interface LoginProps {
-  onLogin: (email: string) => void;
-}
-
-const Login: React.FC<LoginProps> = ({ onLogin }) => {
+const Login: React.FC<{ onLogin: (email: string) => void }> = ({ onLogin }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
@@ -16,13 +11,12 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
     e.preventDefault();
     setLoading(true);
     setError(null);
-    
-    // Artificial delay for local node security verification
-    await new Promise(resolve => setTimeout(resolve, 800));
+
+    await new Promise(resolve => setTimeout(resolve, 800)); // artificial delay
 
     try {
       onLogin(email);
-    } catch (err) {
+    } catch {
       setError('System authentication failure. Verify credentials.');
     } finally {
       setLoading(false);
@@ -31,16 +25,17 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
 
   return (
     <div className="min-h-screen flex items-center justify-center p-4 bg-[#f8fafc] relative overflow-hidden">
-      {/* Decorative patterns for depth without images */}
-      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-dark-red via-primary to-dark-red opacity-20"></div>
+      {/* Background decorations */}
+      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-darkRed via-primary to-darkRed opacity-20"></div>
       <div className="absolute -top-24 -left-24 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
-      <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-dark-red/5 rounded-full blur-3xl"></div>
+      <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-darkRed/5 rounded-full blur-3xl"></div>
 
       <div className="max-w-md w-full relative z-10">
+        {/* Logo and header */}
         <div className="text-center mb-10">
           <div className="inline-block p-6 bg-white rounded-[2.5rem] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.05)] border border-gray-100 mb-6 transform hover:scale-105 transition-all duration-500">
             <img 
-              src={LOGO_URL} 
+              src={LOGO_URL}   // ✅ Uses imported PNG
               alt="Institutional Logo" 
               className="h-32 w-auto object-contain" 
             />
@@ -49,6 +44,7 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
           <p className="text-gray-400 mt-2 font-black text-[10px] uppercase tracking-[0.4em]">Institutional Integrity System</p>
         </div>
 
+        {/* Login form */}
         <div className="bg-white p-10 rounded-[3rem] shadow-[0_50px_100px_-20px_rgba(0,0,0,0.08)] border border-gray-100 relative overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-primary via-gray-100 to-primary"></div>
           
