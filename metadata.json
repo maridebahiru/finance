@@ -1,0 +1,7 @@
+{
+  "name": "Finance Management System",
+  "description": "A comprehensive, role-based finance management system for departments, budget approvals, project tracking, and financial reporting.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
