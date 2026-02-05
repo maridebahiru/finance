@@ -19,7 +19,7 @@ import {
 } from 'lucide-react';
 import { LOGO_URL } from '../constants';
 import { NotificationService } from '../services/notifications';
-
+import ejatLogo from "../assets/ejat.png";
 interface LayoutProps {
   user: User;
   onLogout: () => void;
@@ -98,7 +98,11 @@ const Layout: React.FC<LayoutProps> = ({ user, onLogout, activeTab, setActiveTab
           className={`bg-white p-2 rounded-2xl shadow-lg shadow-black/20 transform hover:scale-105 transition-all cursor-pointer overflow-hidden ${!mobile && isCollapsed ? 'h-12 w-12 p-1.5' : 'h-24'}`} 
           onClick={() => setActiveTab('dashboard')}
         >
-          <img src={LOGO_URL} alt="Logo" className="h-full w-auto object-contain mx-auto" />
+        <img
+  src={ejatLogo}
+  alt="Logo"
+  className="h-full w-auto object-contain mx-auto"
+/>
         </div>
         {(!isCollapsed || mobile) && (
           <div className="text-center animate-in fade-in duration-500">
